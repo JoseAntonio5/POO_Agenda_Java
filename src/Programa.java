@@ -66,12 +66,15 @@ public class Programa {
 		System.out.print("Digite o email do usuario: ");
 		String email = Console.readLine();
 		
-		// SALVANDO O USUARIO
-		Usuario usuario = new Usuario(nome, email);
+		try {
+			// SALVANDO O USUARIO
+			Usuario usuario = new Usuario(nome, email);
+			System.out.println("Usuario cadastrado com sucesso! O seu ID de usuario e: " + numUsuarios);
+			usuarios[numUsuarios++] = usuario;
+		} catch (EmailInvalidoException e){
+			System.out.print("\nErro: Email Invalido!\n");
+		}
 		
-		System.out.println("Usuario cadastrado com sucesso! O seu ID de usuario e: " + numUsuarios);
-		
-		usuarios[numUsuarios++] = usuario;
 	}
 	
 	public static void listaUsuarios() {

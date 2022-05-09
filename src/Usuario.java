@@ -3,8 +3,11 @@ public class Usuario {
 	private String email;
 	private Agenda agenda;
 	
-	public Usuario(String nome, String email) {
+	public Usuario(String nome, String email) throws EmailInvalidoException {
 		this.nome = nome;	
+		if(!email.contains("@")) {
+			throw new EmailInvalidoException();
+		}
 		this.email = email;
 		this.agenda = new Agenda();
 	}
@@ -21,7 +24,7 @@ public class Usuario {
 		return email;
 	}
 	
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailInvalidoException {
 		this.email = email;
 	}
 	
